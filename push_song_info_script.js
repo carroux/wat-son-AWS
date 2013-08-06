@@ -10,6 +10,8 @@ var AWS = require('aws-sdk');
 AWS.config = new AWS.Config();
 AWS.config.loadFromPath('./credentials.json');
 
+TopicArn = 'arn:aws:sns:us-east-1:830920170994:Eventbrite_Hackathon_2013';
+
 // For testing:
 console.log("config loaded");
 
@@ -41,7 +43,7 @@ var sns = new AWS.SNS();
 
 function notify (message) {
    sns.publish({
-         'TopicArn': 'arn:aws:sns:us-east-1:830920170994:Eventbrite_Hackathon_2013',
+         'TopicArn': TopicArn,
          'Message':  message
       }, function (err, data) {
          if (err) {

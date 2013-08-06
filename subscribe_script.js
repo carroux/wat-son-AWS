@@ -10,6 +10,8 @@ var AWS = require('aws-sdk');
 AWS.config = new AWS.Config();
 AWS.config.loadFromPath('./credentials.json');
 
+TopicArn = 'arn:aws:sns:us-east-1:830920170994:Eventbrite_Hackathon_2013';
+
 // For testing:
 console.log("config loaded");
 
@@ -39,7 +41,7 @@ function subscribe(inputtxt)
       console.log(inputtxt);
 
       sns.subscribe({
-         'TopicArn': 'arn:aws:sns:us-east-1:830920170994:Eventbrite_Hackathon_2013',
+         'TopicArn': TopicArn,
          'Protocol': 'sms',
          'Endpoint':  inputtxt
       }, function (err, data) {
